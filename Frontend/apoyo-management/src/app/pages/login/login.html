@@ -1,0 +1,84 @@
+<section class="login-page">
+
+  <div class="login-card">
+
+    <h1>Admin Login</h1>
+
+    <p class="subtitle">
+      Login to access the admin dashboard.
+    </p>
+
+    <form (ngSubmit)="login()">
+
+      <!-- Email -->
+
+      <div class="form-group">
+
+        <label for="email">
+          Email
+        </label>
+
+        <input
+          id="email"
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          placeholder="Enter admin email"
+          autocomplete="email"
+          required
+        />
+
+      </div>
+
+
+      <!-- Password -->
+
+      <div class="form-group">
+
+        <label for="password">
+          Password
+        </label>
+
+        <input
+          id="password"
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          placeholder="Enter password"
+          autocomplete="current-password"
+          required
+        />
+
+      </div>
+
+
+      <!-- Error -->
+
+      @if (errorMessage) {
+
+        <div class="error-message">
+          {{ errorMessage }}
+        </div>
+
+      }
+
+
+      <!-- Login Button -->
+
+      <button
+        type="submit"
+        [disabled]="isSubmitting">
+
+        @if (isSubmitting) {
+          Logging in...
+        } @else {
+          Login
+        }
+
+      </button>
+
+    </form>
+
+  </div>
+
+</section>

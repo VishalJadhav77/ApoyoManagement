@@ -1,0 +1,219 @@
+<section class="form-section">
+
+  <div class="form-container">
+
+    <h1>Apply for Jobs</h1>
+
+    <p>
+      Submit your details and our recruitment team will contact you
+      when a suitable opportunity is available.
+    </p>
+
+    @if (message) {
+      <div class="message">
+        {{ message }}
+      </div>
+    }
+
+    <form
+      [formGroup]="applicationForm"
+      (ngSubmit)="submitForm()">
+
+      <!-- Full Name -->
+      <div class="form-group">
+
+        <label for="fullName">
+          Full Name
+        </label>
+
+        <input
+          id="fullName"
+          type="text"
+          formControlName="fullName"
+          placeholder="Enter your full name">
+
+        @if (
+          applicationForm.get('fullName')?.touched &&
+          applicationForm.get('fullName')?.invalid
+        ) {
+          <small class="error">
+            Full name is required.
+          </small>
+        }
+
+      </div>
+
+
+      <!-- Mobile & City -->
+      <div class="form-row">
+
+        <div class="form-group">
+
+          <label for="mobile">
+            Mobile
+          </label>
+
+          <input
+            id="mobile"
+            type="text"
+            formControlName="mobile"
+            placeholder="Enter mobile number">
+
+          @if (
+            applicationForm.get('mobile')?.touched &&
+            applicationForm.get('mobile')?.invalid
+          ) {
+            <small class="error">
+              Mobile number is required.
+            </small>
+          }
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="currentCity">
+            Current City
+          </label>
+
+          <input
+            id="currentCity"
+            type="text"
+            formControlName="currentCity"
+            placeholder="Enter your city">
+
+          @if (
+            applicationForm.get('currentCity')?.touched &&
+            applicationForm.get('currentCity')?.invalid
+          ) {
+            <small class="error">
+              Current city is required.
+            </small>
+          }
+
+        </div>
+
+      </div>
+
+
+      <!-- Skills -->
+      <div class="form-group">
+
+        <label for="skills">
+          Skills
+        </label>
+
+        <input
+          id="skills"
+          type="text"
+          formControlName="skills"
+          placeholder="e.g. Angular, C#, .NET">
+
+        @if (
+          applicationForm.get('skills')?.touched &&
+          applicationForm.get('skills')?.invalid
+        ) {
+          <small class="error">
+            Skills are required.
+          </small>
+        }
+
+      </div>
+
+
+      <!-- Experience -->
+      <div class="form-group">
+
+        <label for="experienceLevel">
+          Experience Level
+        </label>
+
+        <select
+          id="experienceLevel"
+          formControlName="experienceLevel">
+
+          <option value="">
+            Select experience level
+          </option>
+
+          <option value="Fresher">
+            Fresher
+          </option>
+
+          <option value="1-2 Years">
+            1-2 Years
+          </option>
+
+          <option value="3-5 Years">
+            3-5 Years
+          </option>
+
+          <option value="5+ Years">
+            5+ Years
+          </option>
+
+        </select>
+
+        @if (
+          applicationForm.get('experienceLevel')?.touched &&
+          applicationForm.get('experienceLevel')?.invalid
+        ) {
+          <small class="error">
+            Experience level is required.
+          </small>
+        }
+
+      </div>
+
+
+      <!-- Resume Upload -->
+      <div class="form-group">
+
+        <label for="resume">
+          Resume
+        </label>
+
+        <input
+          id="resume"
+          type="file"
+          accept=".pdf,application/pdf"
+          (change)="onFileSelected($event)">
+
+        @if (selectedFile) {
+          <small class="hint">
+            Selected: {{ selectedFile.name }}
+          </small>
+        }
+
+        @if (fileError) {
+          <small class="error">
+            {{ fileError }}
+          </small>
+        }
+
+        <small class="hint">
+          PDF only. Maximum file size: 5 MB.
+        </small>
+
+      </div>
+
+
+      <!-- Submit -->
+      <button
+        type="submit"
+        [disabled]="isSubmitting">
+
+        {{
+          isSubmitting
+            ? 'Submitting...'
+            : 'Submit Application'
+        }}
+
+      </button>
+
+    </form>
+
+  </div>
+
+</section>

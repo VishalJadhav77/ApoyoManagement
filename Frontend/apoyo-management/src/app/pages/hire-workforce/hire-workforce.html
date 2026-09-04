@@ -1,0 +1,206 @@
+<section class="form-section">
+  <div class="form-container">
+
+    <h1>Hire Workforce</h1>
+
+    <p>
+      Tell us about your workforce requirements and our team will contact you.
+    </p>
+
+    @if (message) {
+      <div class="message">
+        {{ message }}
+      </div>
+    }
+
+    <form [formGroup]="hireForm" (ngSubmit)="submitForm()">
+
+      <!-- Company Name & Contact Person -->
+      <div class="form-row">
+
+        <div class="form-group">
+          <label for="companyName">Company Name</label>
+
+          <input
+            id="companyName"
+            type="text"
+            formControlName="companyName"
+            placeholder="Enter company name">
+
+          @if (
+            hireForm.get('companyName')?.touched &&
+            hireForm.get('companyName')?.invalid
+          ) {
+            <small class="error">
+              Company name is required.
+            </small>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="contactPerson">Contact Person</label>
+
+          <input
+            id="contactPerson"
+            type="text"
+            formControlName="contactPerson"
+            placeholder="Enter contact person">
+
+          @if (
+            hireForm.get('contactPerson')?.touched &&
+            hireForm.get('contactPerson')?.invalid
+          ) {
+            <small class="error">
+              Contact person is required.
+            </small>
+          }
+        </div>
+
+      </div>
+
+      <!-- Email & Mobile -->
+      <div class="form-row">
+
+        <div class="form-group">
+          <label for="businessEmail">Business Email</label>
+
+          <input
+            id="businessEmail"
+            type="email"
+            formControlName="businessEmail"
+            placeholder="Enter business email">
+
+          @if (
+            hireForm.get('businessEmail')?.touched &&
+            hireForm.get('businessEmail')?.invalid
+          ) {
+            <small class="error">
+              Please enter a valid business email.
+            </small>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="mobile">Mobile</label>
+
+          <input
+            id="mobile"
+            type="text"
+            formControlName="mobile"
+            placeholder="Enter mobile number">
+
+          @if (
+            hireForm.get('mobile')?.touched &&
+            hireForm.get('mobile')?.invalid
+          ) {
+            <small class="error">
+              Mobile number is required.
+            </small>
+          }
+        </div>
+
+      </div>
+
+      <!-- Workforce Category & Staff Size -->
+      <div class="form-row">
+
+        <div class="form-group">
+          <label for="workforceCategory">
+            Workforce Category
+          </label>
+
+          <input
+            id="workforceCategory"
+            type="text"
+            formControlName="workforceCategory"
+            placeholder="e.g. Industrial Staffing">
+
+          @if (
+            hireForm.get('workforceCategory')?.touched &&
+            hireForm.get('workforceCategory')?.invalid
+          ) {
+            <small class="error">
+              Workforce category is required.
+            </small>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="estimatedStaffSize">
+            Estimated Staff Size
+          </label>
+
+          <input
+            id="estimatedStaffSize"
+            type="number"
+            formControlName="estimatedStaffSize"
+            placeholder="Enter staff size">
+
+          @if (
+            hireForm.get('estimatedStaffSize')?.touched &&
+            hireForm.get('estimatedStaffSize')?.invalid
+          ) {
+            <small class="error">
+              Staff size must be at least 1.
+            </small>
+          }
+        </div>
+
+      </div>
+
+      <!-- Location -->
+      <div class="form-group">
+        <label for="location">Location</label>
+
+        <input
+          id="location"
+          type="text"
+          formControlName="location"
+          placeholder="Enter location">
+
+        @if (
+          hireForm.get('location')?.touched &&
+          hireForm.get('location')?.invalid
+        ) {
+          <small class="error">
+            Location is required.
+          </small>
+        }
+      </div>
+
+      <!-- Project Details -->
+      <div class="form-group">
+        <label for="projectDetails">
+          Project Details
+        </label>
+
+        <textarea
+          id="projectDetails"
+          rows="5"
+          formControlName="projectDetails"
+          placeholder="Describe your workforce requirements">
+        </textarea>
+
+        @if (
+          hireForm.get('projectDetails')?.touched &&
+          hireForm.get('projectDetails')?.invalid
+        ) {
+          <small class="error">
+            Project details are required.
+          </small>
+        }
+      </div>
+
+      <!-- Submit -->
+      <button
+        type="submit"
+        [disabled]="isSubmitting">
+
+        {{ isSubmitting ? 'Submitting...' : 'Submit Requirement' }}
+
+      </button>
+
+    </form>
+
+  </div>
+</section>

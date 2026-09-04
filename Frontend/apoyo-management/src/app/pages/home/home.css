@@ -1,0 +1,358 @@
+/* ==========================================
+   HOME PAGE
+========================================== */
+
+.home-page {
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+
+/* ==========================================
+   COMMON
+========================================== */
+
+.section-container {
+  width: 90%;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.section-heading {
+  margin-bottom: 35px;
+}
+
+.section-label {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  color: #2563eb;
+}
+
+.section-heading h2 {
+  margin: 10px 0 12px;
+  font-size: 34px;
+  color: #0f172a;
+}
+
+.section-heading p {
+  margin: 0;
+  color: #64748b;
+  line-height: 1.7;
+}
+
+
+/* ==========================================
+   HERO
+========================================== */
+
+.hero {
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  padding: 80px 10%;
+  background: linear-gradient(
+    135deg,
+    #0f172a,
+    #1e3a5f
+  );
+  color: white;
+}
+
+.hero-content {
+  max-width: 780px;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 18px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #bfdbfe;
+}
+
+.hero h1 {
+  margin: 0 0 22px;
+  font-size: 52px;
+  line-height: 1.15;
+}
+
+.hero h1 span {
+  display: block;
+  color: #60a5fa;
+}
+
+.hero p {
+  max-width: 700px;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #dbeafe;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+.btn {
+  display: inline-block;
+  padding: 13px 25px;
+  border-radius: 7px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.primary {
+  background: #2563eb;
+  color: white;
+}
+
+.primary:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+.secondary {
+  border: 1px solid #bfdbfe;
+  color: white;
+  background: transparent;
+}
+
+.secondary:hover {
+  background: white;
+  color: #1e3a5f;
+}
+
+
+/* ==========================================
+   INTRODUCTION
+========================================== */
+
+.intro-section {
+  padding: 80px 0;
+  background: white;
+}
+
+.intro-section .section-heading {
+  margin-bottom: 20px;
+}
+
+.intro-section p {
+  max-width: 850px;
+  margin: 0 0 20px;
+  color: #475569;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.text-link {
+  display: inline-block;
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.text-link:hover {
+  color: #1d4ed8;
+}
+
+
+/* ==========================================
+   SERVICES
+========================================== */
+
+.services-section {
+  padding: 80px 0;
+  background: #f8fafc;
+}
+
+.service-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.service-card {
+  padding: 30px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 7px 22px rgba(15, 23, 42, 0.05);
+  transition: 0.2s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.1);
+}
+
+.service-icon {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 27px;
+  background: #eff6ff;
+  border-radius: 12px;
+}
+
+.service-card h3 {
+  margin: 0 0 12px;
+  font-size: 21px;
+  color: #0f172a;
+}
+
+.service-card p {
+  margin: 0;
+  line-height: 1.7;
+  color: #64748b;
+}
+
+.services-link {
+  margin-top: 30px;
+}
+
+
+/* ==========================================
+   WHY CHOOSE US
+========================================== */
+
+.why-section {
+  padding: 80px 0;
+  background: white;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.why-card {
+  padding: 28px;
+  border-left: 4px solid #2563eb;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.why-card h3 {
+  margin: 0 0 12px;
+  color: #0f172a;
+}
+
+.why-card p {
+  margin: 0;
+  line-height: 1.7;
+  color: #64748b;
+}
+
+
+/* ==========================================
+   CTA
+========================================== */
+
+.home-cta {
+  padding: 75px 0;
+  text-align: center;
+  background: #eff6ff;
+}
+
+.home-cta h2 {
+  margin: 0 0 15px;
+  font-size: 34px;
+  color: #0f172a;
+}
+
+.home-cta p {
+  max-width: 700px;
+  margin: 0 auto 28px;
+  line-height: 1.8;
+  color: #475569;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 900px) {
+
+  .hero {
+    padding: 70px 7%;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+  }
+
+  .service-cards,
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .hero {
+    min-height: auto;
+    padding: 65px 7%;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .hero-buttons,
+  .cta-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    text-align: center;
+  }
+
+  .section-heading h2 {
+    font-size: 28px;
+  }
+
+  .service-cards,
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-section,
+  .services-section,
+  .why-section {
+    padding: 60px 0;
+  }
+
+  .home-cta {
+    padding: 60px 20px;
+  }
+
+}

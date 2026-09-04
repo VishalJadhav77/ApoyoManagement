@@ -1,0 +1,878 @@
+<section class="dashboard">
+
+  <div class="dashboard-container">
+
+    <!-- ==========================================
+         Dashboard Header
+    =========================================== -->
+
+    <h1>Admin Dashboard</h1>
+
+    <div class="dashboard-header">
+
+      <div>
+        <p class="subtitle">
+          Welcome, {{ getUsername() }}
+        </p>
+      </div>
+
+      <button
+        type="button"
+        class="logout-button"
+        (click)="logout()">
+
+        Logout
+
+      </button>
+
+    </div>
+
+    <p class="subtitle">
+      Overview of candidates and corporate workforce requirements.
+    </p>
+
+
+    <!-- ==========================================
+         Main Summary Cards
+    =========================================== -->
+
+    <div class="cards">
+
+      <!-- Total Candidates -->
+
+      <div class="card">
+
+        <h3>Total Candidates</h3>
+
+        <div class="number">
+          {{ totalCandidates() }}
+        </div>
+
+      </div>
+
+
+      <!-- Corporate Leads -->
+
+      <div class="card">
+
+        <h3>Corporate Leads</h3>
+
+        <div class="number">
+          {{ totalCorporateLeads() }}
+        </div>
+
+      </div>
+
+
+      <!-- Admin Users -->
+
+      <div class="card">
+
+        <h3>Admin Users</h3>
+
+        <div class="number">
+          {{ admins().length }}
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ==========================================
+         Candidate Status Summary
+    =========================================== -->
+
+    <div class="status-summary">
+
+      <h2>Candidate Application Status</h2>
+
+      <div class="status-cards">
+
+        <div class="status-card">
+          <span>New</span>
+          <strong>{{ newCandidates() }}</strong>
+        </div>
+
+        <div class="status-card">
+          <span>In Review</span>
+          <strong>{{ inReviewCandidates() }}</strong>
+        </div>
+
+        <div class="status-card">
+          <span>Contacted</span>
+          <strong>{{ contactedCandidates() }}</strong>
+        </div>
+
+        <div class="status-card">
+          <span>Shortlisted</span>
+          <strong>{{ shortlistedCandidates() }}</strong>
+        </div>
+
+        <div class="status-card">
+          <span>Selected</span>
+          <strong>{{ selectedCandidates() }}</strong>
+        </div>
+
+        <div class="status-card">
+          <span>Rejected</span>
+          <strong>{{ rejectedCandidates() }}</strong>
+        </div>
+
+        <div class="status-card">
+          <span>Closed</span>
+          <strong>{{ closedCandidates() }}</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ==========================================
+         Corporate Lead Status Summary
+    =========================================== -->
+
+    <div class="status-summary">
+
+      <h2>Corporate Lead Status</h2>
+
+      <div class="status-cards">
+
+        <div class="status-card">
+          <span>New</span>
+          <strong>{{ newCorporateLeads() }}</strong>
+        </div>
+
+        <div class="status-card">
+          <span>In Review</span>
+          <strong>{{ inReviewCorporateLeads() }}</strong>
+        </div>
+
+        <div class="status-card">
+          <span>Contacted</span>
+          <strong>{{ contactedCorporateLeads() }}</strong>
+        </div>
+
+        <div class="status-card">
+          <span>Proposal Sent</span>
+          <strong>{{ proposalSentLeads() }}</strong>
+        </div>
+
+        <div class="status-card">
+          <span>Contract Signed</span>
+          <strong>{{ contractSignedLeads() }}</strong>
+        </div>
+
+        <div class="status-card">
+          <span>Closed</span>
+          <strong>{{ closedCorporateLeads() }}</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ==========================================
+         Candidate Applications
+    =========================================== -->
+
+    <div class="section">
+
+      <h2>Job Applications</h2>
+
+      <!-- Search & Filter -->
+
+      <div class="filter-bar">
+
+        <input
+          type="text"
+          [(ngModel)]="candidateSearch"
+          placeholder="Search by name, mobile, skills or city"
+        />
+
+        <select
+          [(ngModel)]="candidateStatusFilter">
+
+          <option value="All">
+            All Statuses
+          </option>
+
+          @for (
+            status of candidateStatuses;
+            track status
+          ) {
+
+            <option [value]="status">
+              {{ status }}
+            </option>
+
+          }
+
+        </select>
+
+      </div>
+
+
+      <!-- Candidate Table -->
+
+      @if (getFilteredCandidates().length === 0) {
+
+        <p class="empty">
+          No candidate applications found.
+        </p>
+
+      } @else {
+
+        <div class="table-container">
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>Name</th>
+
+                <th>Mobile</th>
+
+                <th>Skills</th>
+
+                <th>City</th>
+
+                <th>Experience</th>
+
+                <th>Resume</th>
+
+                <th>Status</th>
+
+                <th>Assigned To</th>
+
+                <th>Follow-up</th>
+
+                <th>Internal Notes</th>
+
+                <th>Action</th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody>
+
+              @for (
+                candidate of getFilteredCandidates();
+                track candidate.id
+              ) {
+
+                <tr>
+
+                  <td>
+                    {{ candidate.fullName }}
+                  </td>
+
+
+                  <td>
+                    {{ candidate.mobile }}
+                  </td>
+
+
+                  <td>
+                    {{ candidate.skills }}
+                  </td>
+
+
+                  <td>
+                    {{ candidate.currentCity }}
+                  </td>
+
+
+                  <td>
+                    {{ candidate.experienceLevel }}
+                  </td>
+
+
+                  <!-- Resume -->
+
+                  <td>
+
+                    @if (candidate.resumePath) {
+
+                      <a
+                        [href]="'http://localhost:5103' + candidate.resumePath"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        View Resume
+
+                      </a>
+
+                    } @else {
+
+                      <span>
+                        No Resume
+                      </span>
+
+                    }
+
+                  </td>
+
+
+                  <!-- Status -->
+
+                  <td>
+
+                    <select
+                      [(ngModel)]="candidate.status">
+
+                      @for (
+                        status of candidateStatuses;
+                        track status
+                      ) {
+
+                        <option [value]="status">
+                          {{ status }}
+                        </option>
+
+                      }
+
+                    </select>
+
+                  </td>
+
+
+                  <!-- Assigned To -->
+
+                  <td>
+
+                    <input
+                      type="text"
+                      [(ngModel)]="candidate.assignedTo"
+                      placeholder="Admin name"
+                    />
+
+                  </td>
+
+
+                  <!-- Follow-up -->
+
+                  <td>
+
+                    <input
+                      type="date"
+                      [(ngModel)]="candidate.followUpDate"
+                    />
+
+                  </td>
+
+
+                  <!-- Internal Notes -->
+
+                  <td>
+
+                    <textarea
+                      [(ngModel)]="candidate.internalNotes"
+                      placeholder="Add notes">
+                    </textarea>
+
+                  </td>
+
+
+                  <!-- Update -->
+
+                  <td>
+
+                    <button
+                      type="button"
+                      class="update-button"
+                      [disabled]="updatingCandidateId === candidate.id"
+                      (click)="updateCandidate(candidate)">
+
+                      @if (
+                        updatingCandidateId === candidate.id
+                      ) {
+
+                        Updating...
+
+                      } @else {
+
+                        Update
+
+                      }
+
+                    </button>
+
+                  </td>
+
+                </tr>
+
+              }
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      }
+
+    </div>
+
+
+    <!-- ==========================================
+         Corporate Leads
+    =========================================== -->
+
+    <div class="section">
+
+      <h2>B2B Client Leads</h2>
+
+
+      <!-- Search & Filter -->
+
+      <div class="filter-bar">
+
+        <input
+          type="text"
+          [(ngModel)]="corporateSearch"
+          placeholder="Search by company, contact, email or location"
+        />
+
+        <select
+          [(ngModel)]="corporateStatusFilter">
+
+          <option value="All">
+            All Statuses
+          </option>
+
+          @for (
+            status of corporateLeadStatuses;
+            track status
+          ) {
+
+            <option [value]="status">
+              {{ status }}
+            </option>
+
+          }
+
+        </select>
+
+      </div>
+
+
+      <!-- Corporate Lead Table -->
+
+      @if (getFilteredCorporateLeads().length === 0) {
+
+        <p class="empty">
+          No corporate leads found.
+        </p>
+
+      } @else {
+
+        <div class="table-container">
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>Company</th>
+
+                <th>Contact</th>
+
+                <th>Email</th>
+
+                <th>Mobile</th>
+
+                <th>Workforce</th>
+
+                <th>Staff Size</th>
+
+                <th>Location</th>
+
+                <th>Status</th>
+
+                <th>Assigned To</th>
+
+                <th>Follow-up</th>
+
+                <th>Internal Notes</th>
+
+                <th>Action</th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody>
+
+              @for (
+                lead of getFilteredCorporateLeads();
+                track lead.id
+              ) {
+
+                <tr>
+
+                  <td>
+                    {{ lead.companyName }}
+                  </td>
+
+
+                  <td>
+                    {{ lead.contactPerson }}
+                  </td>
+
+
+                  <td>
+                    {{ lead.businessEmail }}
+                  </td>
+
+
+                  <td>
+                    {{ lead.mobile }}
+                  </td>
+
+
+                  <td>
+                    {{ lead.workforceCategory }}
+                  </td>
+
+
+                  <td>
+                    {{ lead.estimatedStaffSize }}
+                  </td>
+
+
+                  <td>
+                    {{ lead.location }}
+                  </td>
+
+
+                  <!-- Status -->
+
+                  <td>
+
+                    <select
+                      [(ngModel)]="lead.status">
+
+                      @for (
+                        status of corporateLeadStatuses;
+                        track status
+                      ) {
+
+                        <option [value]="status">
+                          {{ status }}
+                        </option>
+
+                      }
+
+                    </select>
+
+                  </td>
+
+
+                  <!-- Assigned To -->
+
+                  <td>
+
+                    <input
+                      type="text"
+                      [(ngModel)]="lead.assignedTo"
+                      placeholder="Admin name"
+                    />
+
+                  </td>
+
+
+                  <!-- Follow-up -->
+
+                  <td>
+
+                    <input
+                      type="date"
+                      [(ngModel)]="lead.followUpDate"
+                    />
+
+                  </td>
+
+
+                  <!-- Internal Notes -->
+
+                  <td>
+
+                    <textarea
+                      [(ngModel)]="lead.internalNotes"
+                      placeholder="Add notes">
+                    </textarea>
+
+                  </td>
+
+
+                  <!-- Update -->
+
+                  <td>
+
+                    <button
+                      type="button"
+                      class="update-button"
+                      [disabled]="updatingCorporateLeadId === lead.id"
+                      (click)="updateCorporateLead(lead)">
+
+                      @if (
+                        updatingCorporateLeadId === lead.id
+                      ) {
+
+                        Updating...
+
+                      } @else {
+
+                        Update
+
+                      }
+
+                    </button>
+
+                  </td>
+
+                </tr>
+
+              }
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      }
+
+    </div>
+
+
+    <!-- ==========================================
+         Admin Management
+    =========================================== -->
+
+    <div class="section admin-management">
+
+      <div class="section-header">
+
+        <div>
+
+          <h2>Manage Admin Users</h2>
+
+          <p class="section-description">
+            Create and manage administrator accounts.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- ========================================
+           Add Admin Form
+      ========================================= -->
+
+      <div class="admin-form">
+
+        <h3>Add New Admin</h3>
+
+
+        <div class="form-grid">
+
+          <!-- Name -->
+
+          <div class="form-group">
+
+            <label for="adminName">
+              Name
+            </label>
+
+            <input
+              id="adminName"
+              type="text"
+              [(ngModel)]="newAdminName"
+              placeholder="Enter name"
+              autocomplete="name"
+            />
+
+          </div>
+
+
+          <!-- Email -->
+
+          <div class="form-group">
+
+            <label for="adminEmail">
+              Email
+            </label>
+
+            <input
+              id="adminEmail"
+              type="email"
+              [(ngModel)]="newAdminEmail"
+              placeholder="Enter email"
+              autocomplete="email"
+            />
+
+          </div>
+
+
+          <!-- Password -->
+
+          <div class="form-group">
+
+            <label for="adminPassword">
+              Password
+            </label>
+
+            <input
+              id="adminPassword"
+              type="password"
+              [(ngModel)]="newAdminPassword"
+              placeholder="Enter password"
+              autocomplete="new-password"
+            />
+
+          </div>
+
+        </div>
+
+
+        <!-- Add Admin Button -->
+
+        <button
+          type="button"
+          class="admin-button"
+          [disabled]="isCreatingAdmin"
+          (click)="createAdmin()">
+
+          @if (isCreatingAdmin) {
+
+            Creating...
+
+          } @else {
+
+            Add Admin
+
+          }
+
+        </button>
+
+
+        <!-- Success -->
+
+        @if (adminMessage) {
+
+          <div class="success-message">
+            {{ adminMessage }}
+          </div>
+
+        }
+
+
+        <!-- Error -->
+
+        @if (adminError) {
+
+          <div class="error-message">
+            {{ adminError }}
+          </div>
+
+        }
+
+      </div>
+
+
+      <!-- ========================================
+           Existing Admin Users
+      ========================================= -->
+
+      <h3>Existing Admin Users</h3>
+
+      <div class="table-container">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>Name</th>
+
+              <th>Email</th>
+
+              <th>Role</th>
+
+              <th>Created</th>
+
+            </tr>
+
+          </thead>
+
+
+          <tbody>
+
+            @if (admins().length === 0) {
+
+              <tr>
+
+                <td
+                  colspan="4"
+                  class="empty">
+
+                  No admin users found.
+
+                </td>
+
+              </tr>
+
+            } @else {
+
+              @for (
+                admin of admins();
+                track admin.id
+              ) {
+
+                <tr>
+
+                  <td>
+                    {{ admin.name }}
+                  </td>
+
+                  <td>
+                    {{ admin.email }}
+                  </td>
+
+                  <td>
+                    {{ admin.role }}
+                  </td>
+
+                  <td>
+                    {{ admin.createdAt | date:'dd-MM-yyyy' }}
+                  </td>
+
+                </tr>
+
+              }
+
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>

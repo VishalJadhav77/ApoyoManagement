@@ -1,0 +1,205 @@
+.about-page {
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+.container {
+  width: 90%;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.about-hero {
+  padding: 90px 0;
+  background: linear-gradient(
+    135deg,
+    #0f172a,
+    #1e3a5f
+  );
+  color: white;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 18px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  opacity: 0.85;
+}
+
+.about-hero h1 {
+  max-width: 750px;
+  margin: 0 0 22px;
+  font-size: 52px;
+  line-height: 1.15;
+}
+
+.about-hero h1 span {
+  color: #60a5fa;
+}
+
+.about-hero p {
+  max-width: 700px;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #dbeafe;
+}
+
+.about-content {
+  padding: 70px 0;
+}
+
+.content-section {
+  margin-bottom: 70px;
+}
+
+.section-heading {
+  margin-bottom: 25px;
+}
+
+.section-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  color: #2563eb;
+}
+
+.section-heading h2 {
+  margin: 10px 0 0;
+  font-size: 34px;
+  color: #0f172a;
+}
+
+.content-section > p {
+  max-width: 900px;
+  margin-bottom: 18px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #475569;
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  margin-bottom: 80px;
+}
+
+.info-card {
+  padding: 35px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
+}
+
+.icon {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.info-card h3 {
+  margin-bottom: 12px;
+  font-size: 23px;
+  color: #0f172a;
+}
+
+.info-card p {
+  margin: 0;
+  line-height: 1.7;
+  color: #64748b;
+}
+
+.why-section {
+  margin-bottom: 70px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.feature {
+  padding: 25px;
+  background: white;
+  border-left: 4px solid #2563eb;
+  border-radius: 8px;
+  box-shadow: 0 5px 18px rgba(15, 23, 42, 0.05);
+}
+
+.feature h3 {
+  margin: 0 0 10px;
+  color: #0f172a;
+}
+
+.feature p {
+  margin: 0;
+  line-height: 1.7;
+  color: #64748b;
+}
+
+.about-cta {
+  padding: 50px;
+  margin-top: 30px;
+  text-align: center;
+  background: #eff6ff;
+  border-radius: 16px;
+}
+
+.about-cta h2 {
+  margin: 0 0 12px;
+  color: #0f172a;
+}
+
+.about-cta p {
+  max-width: 650px;
+  margin: 0 auto 25px;
+  line-height: 1.7;
+  color: #475569;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 13px 25px;
+  color: white;
+  background: #2563eb;
+  border-radius: 7px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.cta-button:hover {
+  background: #1d4ed8;
+}
+
+@media (max-width: 768px) {
+
+  .about-hero {
+    padding: 65px 0;
+  }
+
+  .about-hero h1 {
+    font-size: 38px;
+  }
+
+  .mission-grid,
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-content {
+    padding: 50px 0;
+  }
+
+  .section-heading h2 {
+    font-size: 28px;
+  }
+
+  .about-cta {
+    padding: 35px 20px;
+  }
+
+}

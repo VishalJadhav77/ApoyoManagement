@@ -1,0 +1,6 @@
+@ApoyoManagement.API_HostAddress = http://localhost:5103
+
+GET {{ApoyoManagement.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
