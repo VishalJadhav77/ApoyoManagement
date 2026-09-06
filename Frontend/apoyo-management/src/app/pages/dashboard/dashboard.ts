@@ -608,7 +608,71 @@ export class Dashboard implements OnInit {
 
   }
 
+  // ==========================================
+// Delete Candidate
+// ==========================================
 
+deleteCandidate(candidate: any): void {
+
+  const confirmed = confirm(
+    `Are you sure you want to delete the application of ${candidate.fullName}?`
+  );
+
+  if (!confirmed) {
+    return;
+  }
+
+  this.dashboardService
+    .deleteCandidate(candidate.id)
+    .subscribe({
+      next: () => {
+        alert('Candidate application deleted successfully.');
+        this.loadDashboard();
+      },
+      error: (error) => {
+        console.error('Error deleting candidate:', error);
+
+        if (error.status === 401 || error.status === 403) {
+          alert('You are not authorized to delete this application.');
+        } else {
+          alert('Failed to delete candidate application.');
+        }
+      }
+    });
+}
+
+// ==========================================
+// Delete Corporate Lead
+// ==========================================
+
+deleteCorporateLead(lead: any): void {
+
+  const confirmed = confirm(
+    `Are you sure you want to delete the lead for ${lead.companyName}?`
+  );
+
+  if (!confirmed) {
+    return;
+  }
+
+  this.dashboardService
+    .deleteCorporateLead(lead.id)
+    .subscribe({
+      next: () => {
+        alert('Corporate lead deleted successfully.');
+        this.loadDashboard();
+      },
+      error: (error) => {
+        console.error('Error deleting corporate lead:', error);
+
+        if (error.status === 401 || error.status === 403) {
+          alert('You are not authorized to delete this lead.');
+        } else {
+          alert('Failed to delete corporate lead.');
+        }
+      }
+    });
+}
   // ==========================================
   // Filtered Candidates
   // ==========================================
@@ -724,5 +788,7 @@ export class Dashboard implements OnInit {
     this.router.navigate(['/login']);
 
   }
+
+
 
 }

@@ -19,6 +19,39 @@
   margin-bottom: 30px;
 }
 
+/* ==========================================
+   Dashboard Header
+========================================== */
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* ==========================================
+   Logout Button
+========================================== */
+
+.logout-button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #1f2937;
+  color: white;
+  font-weight: 500;
+}
+
+.logout-button:hover {
+  background: #111827;
+}
+
+/* ==========================================
+   Summary Cards
+========================================== */
+
 .cards {
   display: flex;
   gap: 20px;
@@ -44,11 +77,60 @@
   color: #1f2937;
 }
 
+/* ==========================================
+   Status Summary
+========================================== */
+
+.status-summary {
+  background: white;
+  padding: 25px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.status-summary h2 {
+  margin-top: 0;
+  color: #1f2937;
+}
+
+.status-cards {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.status-card {
+  background: #f9fafb;
+  padding: 15px 20px;
+  border-radius: 6px;
+  min-width: 100px;
+  text-align: center;
+  border: 1px solid #e5e7eb;
+}
+
+.status-card span {
+  display: block;
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.status-card strong {
+  font-size: 24px;
+  color: #1f2937;
+}
+
+/* ==========================================
+   Sections
+========================================== */
+
 .section {
   background: white;
   padding: 25px;
   margin-bottom: 30px;
   border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .section h2 {
@@ -56,13 +138,47 @@
   color: #1f2937;
 }
 
+/* ==========================================
+   Search & Filter
+========================================== */
+
+.filter-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.filter-bar input,
+.filter-bar select {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.filter-bar input {
+  flex: 1;
+  min-width: 250px;
+}
+
+.filter-bar select {
+  min-width: 160px;
+}
+
+/* ==========================================
+   Tables
+========================================== */
+
 .table-container {
   overflow-x: auto;
+  width: 100%;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 1100px;
 }
 
 th,
@@ -70,18 +186,215 @@ td {
   padding: 12px;
   text-align: left;
   border-bottom: 1px solid #e5e7eb;
+  vertical-align: middle;
 }
 
 th {
   background: #f9fafb;
   font-weight: 600;
+  color: #374151;
+  white-space: nowrap;
 }
+
+td {
+  color: #4b5563;
+}
+
+/* ==========================================
+   Table Inputs
+========================================== */
+
+td input,
+td select,
+td textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+td textarea {
+  min-width: 160px;
+  min-height: 60px;
+  resize: vertical;
+}
+
+td input:focus,
+td select:focus,
+td textarea:focus {
+  outline: none;
+  border-color: #6b7280;
+}
+
+/* ==========================================
+   Resume Link
+========================================== */
+
+td a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+td a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================
+   Action Column
+========================================== */
+
+th:last-child,
+td:last-child {
+  min-width: 160px;
+  white-space: nowrap;
+}
+
+/* ==========================================
+   Update Button
+========================================== */
+
+.update-button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #2563eb;
+  color: white;
+  font-weight: 500;
+}
+
+.update-button:hover {
+  background: #1d4ed8;
+}
+
+.update-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   Delete Button
+========================================== */
+
+.delete-button {
+  margin-left: 8px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #dc3545;
+  color: white;
+  font-weight: 500;
+}
+
+.delete-button:hover {
+  background: #bb2d3b;
+}
+
+.delete-button:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================
+   Empty Message
+========================================== */
 
 .empty {
   color: #6b7280;
+  padding: 15px 0;
 }
 
-@media (max-width: 700px) {
+/* ==========================================
+   Admin Management
+========================================== */
+
+.admin-management h3 {
+  color: #1f2937;
+}
+
+.admin-form {
+  background: #f9fafb;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.admin-form h3 {
+  margin-top: 0;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: #374151;
+}
+
+.form-group input {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+}
+
+.admin-button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #2563eb;
+  color: white;
+  font-weight: 500;
+}
+
+.admin-button:hover {
+  background: #1d4ed8;
+}
+
+.admin-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   Messages
+========================================== */
+
+.success-message {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  background: #dcfce7;
+  color: #166534;
+}
+
+.error-message {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* ==========================================
+   Mobile Responsive
+========================================== */
+
+@media (max-width: 900px) {
 
   .dashboard {
     padding: 20px;
@@ -90,4 +403,38 @@ th {
   .cards {
     flex-direction: column;
   }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .dashboard {
+    padding: 15px;
+  }
+
+  .section,
+  .status-summary {
+    padding: 15px;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+  }
+
+  .filter-bar input,
+  .filter-bar select {
+    width: 100%;
+    min-width: 0;
+  }
+
 }

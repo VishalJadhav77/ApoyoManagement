@@ -164,4 +164,46 @@ public class CandidateApplicationsController : ControllerBase
             applicationId = application.Id
         });
     }
+
+    // =========================================================
+    // ADMIN ONLY - Delete candidate application
+    // =========================================================
+    [Authorize(Roles = "Admin")]
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var application = await _context.CandidateApplications
+            .FirstOrDefaultAsync(x => x.Id == id);
+
+        if (application == null)
+        {
+            return NotFound(new
+            {
+                message = "Candidate application not found."
+            });
+        }
+
+        // Delete resume file if it exists
+        if (!string.IsNullOrWhiteSpace(application.ResumePath))
+        {
+            var filePath = Path.Combine(
+                _environment.WebRootPath ?? "wwwroot",
+                application.ResumePath.TrimStart('/').Replace("/", Path.DirectorySeparatorChar.ToString())
+            );
+
+            if (System.IO.File.Exists(filePath))
+            {
+                System.IO.File.Delete(filePath);
+            }
+        }
+
+        _context.CandidateApplications.Remove(application);
+
+        await _context.SaveChangesAsync();
+
+        return Ok(new
+        {
+            message = "Candidate application deleted successfully."
+        });
+    }
 }

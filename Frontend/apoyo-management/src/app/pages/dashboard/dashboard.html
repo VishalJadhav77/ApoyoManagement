@@ -273,21 +273,17 @@
                     {{ candidate.fullName }}
                   </td>
 
-
                   <td>
                     {{ candidate.mobile }}
                   </td>
-
 
                   <td>
                     {{ candidate.skills }}
                   </td>
 
-
                   <td>
                     {{ candidate.currentCity }}
                   </td>
-
 
                   <td>
                     {{ candidate.experienceLevel }}
@@ -380,7 +376,7 @@
                   </td>
 
 
-                  <!-- Update -->
+                  <!-- Actions -->
 
                   <td>
 
@@ -401,6 +397,16 @@
                         Update
 
                       }
+
+                    </button>
+
+
+                    <button
+                      type="button"
+                      class="delete-button"
+                      (click)="deleteCandidate(candidate)">
+
+                      Delete
 
                     </button>
 
@@ -523,31 +529,25 @@
                     {{ lead.companyName }}
                   </td>
 
-
                   <td>
                     {{ lead.contactPerson }}
                   </td>
-
 
                   <td>
                     {{ lead.businessEmail }}
                   </td>
 
-
                   <td>
                     {{ lead.mobile }}
                   </td>
-
 
                   <td>
                     {{ lead.workforceCategory }}
                   </td>
 
-
                   <td>
                     {{ lead.estimatedStaffSize }}
                   </td>
-
 
                   <td>
                     {{ lead.location }}
@@ -614,7 +614,7 @@
                   </td>
 
 
-                  <!-- Update -->
+                  <!-- Actions -->
 
                   <td>
 
@@ -635,6 +635,16 @@
                         Update
 
                       }
+
+                    </button>
+
+
+                    <button
+                      type="button"
+                      class="delete-button"
+                      (click)="deleteCorporateLead(lead)">
+
+                      Delete
 
                     </button>
 
@@ -875,4 +885,4 @@
 
   </div>
 
-</section>
+</section>  

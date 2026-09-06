@@ -73,4 +73,29 @@ export class DashboardService {
 
   }
 
+    // ==========================================
+  // Delete Candidate Application
+  // ==========================================
+
+  deleteCandidate(id: number): Observable<any> {
+
+    return this.http.delete<any>(
+      `${this.candidateApi}/${id}`
+    );
+
+  }
+
+
+  // ==========================================
+  // Delete Corporate Lead
+  // ==========================================
+
+  deleteCorporateLead(id: number): Observable<any> {
+
+    return this.http.delete<any>(
+      `${this.corporateApi}/${id}`
+    );
+
+  }
+
 }

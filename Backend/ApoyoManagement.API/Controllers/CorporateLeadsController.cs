@@ -106,4 +106,31 @@ public class CorporateLeadsController : ControllerBase
             leadId = lead.Id
         });
     }
+    // =========================================================
+    // ADMIN ONLY - Delete corporate lead
+    // =========================================================
+    [Authorize(Roles = "Admin")]
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var lead = await _context.CorporateLeads
+            .FirstOrDefaultAsync(x => x.Id == id);
+
+        if (lead == null)
+        {
+            return NotFound(new
+            {
+                message = "Corporate lead not found."
+            });
+        }
+
+        _context.CorporateLeads.Remove(lead);
+
+        await _context.SaveChangesAsync();
+
+        return Ok(new
+        {
+            message = "Corporate lead deleted successfully."
+        });
+    }
 }
