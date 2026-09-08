@@ -10,10 +10,19 @@
     </p>
 
     @if (message) {
-      <div class="message">
-        {{ message }}
-      </div>
-    }
+  <div class="toast-message">
+
+    <span class="toast-icon">
+      ✓
+    </span>
+
+    <span>
+      {{ message }}
+    </span>
+
+  </div>
+}
+    
 
     <form
       [formGroup]="applicationForm"
@@ -55,18 +64,24 @@
 
           <input
             id="mobile"
-            type="text"
+            type="tel"
             formControlName="mobile"
             placeholder="Enter mobile number">
 
-          @if (
-            applicationForm.get('mobile')?.touched &&
-            applicationForm.get('mobile')?.invalid
-          ) {
-            <small class="error">
-              Mobile number is required.
-            </small>
-          }
+         @if (
+  applicationForm.get('mobile')?.touched &&
+  applicationForm.get('mobile')?.invalid
+) {
+  <small class="error">
+    @if (applicationForm.get('mobile')?.errors?.['required']) {
+      Mobile number is required.
+    }
+
+    @if (applicationForm.get('mobile')?.errors?.['pattern']) {
+      Mobile number must be exactly 10 digits.
+    }
+  </small>
+}
 
         </div>
 

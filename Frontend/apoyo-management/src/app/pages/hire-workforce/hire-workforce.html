@@ -8,10 +8,11 @@
     </p>
 
     @if (message) {
-      <div class="message">
-        {{ message }}
-      </div>
-    }
+  <div class="toast-message">
+    <span class="toast-icon">✓</span>
+    <span>{{ message }}</span>
+  </div>
+}
 
     <form [formGroup]="hireForm" (ngSubmit)="submitForm()">
 

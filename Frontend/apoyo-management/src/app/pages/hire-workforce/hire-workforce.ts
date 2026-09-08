@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import {
   FormBuilder,
   ReactiveFormsModule,
@@ -25,13 +25,21 @@ export class HireWorkforce {
 
   constructor(
     private fb: FormBuilder,
-    private corporateLeadService: CorporateLeadService
+    private corporateLeadService: CorporateLeadService,
+    private cdr: ChangeDetectorRef
   ) {
 
     this.hireForm = this.fb.group({
-      companyName: ['', Validators.required],
 
-      contactPerson: ['', Validators.required],
+      companyName: [
+        '',
+        Validators.required
+      ],
+
+      contactPerson: [
+        '',
+        Validators.required
+      ],
 
       businessEmail: [
         '',
@@ -41,7 +49,13 @@ export class HireWorkforce {
         ]
       ],
 
-      mobile: ['', Validators.required],
+      mobile: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(/^[6-9]\d{9}$/)
+        ]
+      ],
 
       workforceCategory: [
         '',
@@ -89,8 +103,9 @@ export class HireWorkforce {
 
         console.log('API Response:', response);
 
+        // Show success notification
         this.message =
-          'Workforce requirement submitted successfully.';
+          'Requirement submitted successfully! Our team will get in touch with you shortly.';
 
         // Reset form
         this.hireForm.reset({
@@ -98,6 +113,16 @@ export class HireWorkforce {
         });
 
         this.isSubmitting = false;
+
+        // Automatically hide notification after 4 seconds
+        setTimeout(() => {
+
+          this.message = '';
+
+          // Force Angular to update the UI
+          this.cdr.detectChanges();
+
+        }, 4000);
       },
 
       error: (error: any) => {
@@ -108,6 +133,8 @@ export class HireWorkforce {
           'Unable to submit the requirement. Please try again.';
 
         this.isSubmitting = false;
+
+        this.cdr.detectChanges();
       }
 
     });
