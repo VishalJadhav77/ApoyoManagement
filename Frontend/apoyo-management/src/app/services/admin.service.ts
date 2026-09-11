@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environment/environment';
 
 export interface AdminLoginRequest {
   email: string;
@@ -20,7 +21,7 @@ export interface AdminLoginResponse {
 })
 export class AdminService {
 
-  private apiUrl = 'http://localhost:5103/api/Admin';
+  private apiUrl = `${environment.apiUrl}/api/Admin`;
 
   constructor(private http: HttpClient) {}
 

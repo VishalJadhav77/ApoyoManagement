@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environment/environment';
 
 export interface CorporateLead {
   companyName: string;
@@ -18,7 +19,7 @@ export interface CorporateLead {
 })
 export class CorporateLeadService {
 
-  private apiUrl = 'http://localhost:5103/api/CorporateLeads';
+  private apiUrl = `${environment.apiUrl}/api/CorporateLeads`;
 
   constructor(private http: HttpClient) {}
 

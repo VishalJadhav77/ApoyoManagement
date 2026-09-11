@@ -2,7 +2,7 @@ import { Component, OnInit, signal } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { environment } from '../../../environment/environment';
 import { DashboardService } from '../../services/dashboard';
 
 import {
@@ -18,6 +18,8 @@ import {
   styleUrl: './dashboard.css'
 })
 export class Dashboard implements OnInit {
+
+  readonly apiUrl = environment.apiUrl;
 
   // ==========================================
   // Candidates

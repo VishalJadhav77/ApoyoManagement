@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environment/environment';
 
 export interface CandidateApplication {
   fullName: string;
@@ -16,7 +17,7 @@ export interface CandidateApplication {
 export class CandidateApplicationService {
 
   private apiUrl =
-    'http://localhost:5103/api/CandidateApplications';
+    `${environment.apiUrl}/api/CandidateApplications`;
 
   constructor(private http: HttpClient) {}
 

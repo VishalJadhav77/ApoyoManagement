@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environment/environment';
 
 export interface UpdateLeadRequest {
   status?: string | null;
@@ -15,10 +16,10 @@ export interface UpdateLeadRequest {
 export class DashboardService {
 
   private candidateApi =
-    'http://localhost:5103/api/CandidateApplications';
+    `${environment.apiUrl}/api/CandidateApplications`;
 
   private corporateApi =
-    'http://localhost:5103/api/CorporateLeads';
+    `${environment.apiUrl}/api/CorporateLeads`;
 
   constructor(private http: HttpClient) {}
 

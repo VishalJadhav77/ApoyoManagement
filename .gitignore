@@ -1,4 +1,7 @@
+# =========================
 # .NET
+# =========================
+
 **/bin/
 **/obj/
 
@@ -7,23 +10,89 @@
 *.user
 *.suo
 
+
+# =========================
 # Angular
+# =========================
+
 **/node_modules/
 **/dist/
 **/.angular/
 
-# Logs
-*.log
+# Angular temporary/build files
+/tmp
+/out-tsc
+/bazel-out
 
-# Environment / secrets
+
+# =========================
+# Logs
+# =========================
+
+*.log
+npm-debug.log
+yarn-error.log
+
+
+# =========================
+# Environment / Secrets
+# =========================
+
 .env
 .env.*
+**/appsettings.Development.json
 
-# OS
+
+# =========================
+# Deployment / Published Files
+# =========================
+
+**/publish/
+**/publish-deploy/
+Published/
+
+
+# =========================
+# Uploaded Files
+# =========================
+
+# Ignore uploaded resumes
+**/wwwroot/resumes/*
+
+
+# =========================
+# IDEs and Editors
+# =========================
+
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/mcp.json
+
+.history/
+
+
+# =========================
+# Test / Coverage
+# =========================
+
+/coverage
+testem.log
+
+
+# =========================
+# OS Files
+# =========================
+
 .DS_Store
 Thumbs.db
-
-# Uploaded resumes
-**/wwwroot/resumes/*
-# Local development settings
-**/appsettings.Development.json
