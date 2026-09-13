@@ -177,13 +177,13 @@
 
 table {
   width: 100%;
+  min-width: 1500px;
   border-collapse: collapse;
-  min-width: 1100px;
 }
 
 th,
 td {
-  padding: 12px;
+  padding: 12px 14px;
   text-align: left;
   border-bottom: 1px solid #e5e7eb;
   vertical-align: middle;
@@ -213,10 +213,31 @@ td textarea {
   border: 1px solid #d1d5db;
   border-radius: 5px;
   font-size: 14px;
+  background: white;
 }
 
+/* Status dropdown */
+
+td select {
+  min-width: 120px;
+}
+
+/* Assigned To */
+
+td input[type="text"] {
+  min-width: 120px;
+}
+
+/* Follow-up Date */
+
+td input[type="date"] {
+  min-width: 140px;
+}
+
+/* Internal Notes */
+
 td textarea {
-  min-width: 160px;
+  min-width: 180px;
   min-height: 60px;
   resize: vertical;
 }
@@ -248,7 +269,7 @@ td a:hover {
 
 th:last-child,
 td:last-child {
-  min-width: 160px;
+  min-width: 170px;
   white-space: nowrap;
 }
 
@@ -349,7 +370,18 @@ td:last-child {
   padding: 10px 12px;
   border: 1px solid #d1d5db;
   border-radius: 6px;
+  box-sizing: border-box;
+  width: 100%;
 }
+
+.form-group input:focus {
+  outline: none;
+  border-color: #6b7280;
+}
+
+/* ==========================================
+   Add Admin Button
+========================================== */
 
 .admin-button {
   padding: 10px 18px;
@@ -413,7 +445,6 @@ td:last-child {
     align-items: flex-start;
     gap: 15px;
   }
-
 }
 
 @media (max-width: 700px) {
@@ -437,4 +468,11 @@ td:last-child {
     min-width: 0;
   }
 
+  .status-cards {
+    gap: 10px;
+  }
+
+  .status-card {
+    min-width: 80px;
+  }
 }
